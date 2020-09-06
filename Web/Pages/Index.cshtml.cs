@@ -21,5 +21,10 @@ namespace Web.Pages
         {
 
         }
+
+        public void OnPost()
+        {
+
+        }
     }
 }
