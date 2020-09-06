@@ -16,9 +16,9 @@ namespace Data
 
         #endregion
 
-        public EfRepository()
+        public EfRepository(IDbContext context)
         {
-
+            this._context = context;
         }
         protected virtual DbSet<TEntity> Entities
         {

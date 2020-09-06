@@ -2,9 +2,45 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    Services.CalculateModel result = null;
+    if (ViewData["result"] != null)
+    {
+        result = (Services.CalculateModel)ViewData["result"];
+    }
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<form method="post">
+    <input type="text" name="startDate" value="01.01.2020" />
+    <input type="text" name="endDate" value="01.10.2020" />
+    <select name="countryId">
+        <option>Select Country</option>
+        <option value="1">Turkey</option>
+        <option value="2">Dubai</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+@if (result != null)
+{
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <td>Total day count:</td>
+            <td>@result.TotalDayCount</td>
+        </tr>
+        @if (result.DayCountPenaltied > 0)
+        {
+            <tr>
+                <td><strong>Total day count penaltied:</strong></td>
+                <td><strong>@result.DayCountPenaltied</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Penalty payment:</strong></td>
+                <td><strong>@result.PenaltyPayment @result.Currency</strong></td>
+            </tr>
+        }
+    </tbody>
+</table>
+    
+}

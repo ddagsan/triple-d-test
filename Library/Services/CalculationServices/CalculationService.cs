@@ -25,12 +25,22 @@ namespace Services.CalculationServices
         }
         public CalculateModel Calculate(DateTime start, DateTime end, int countryId)
         {
+            var limitSetting = _settingRepo.Table.FirstOrDefault(m => m.Key == ReservationLimitKey);
+            if (limitSetting == null)
+            {
+                throw new Exception($"{ReservationLimitKey} setting cannot found.");
+            }
             int limit = int.Parse(_settingRepo.Table.FirstOrDefault(m => m.Key == ReservationLimitKey).Value);
-            int penaltyFee = int.Parse(_settingRepo.Table.FirstOrDefault(m => m.Key == PenaltyFeeKey).Value);
+            var penaltyFeeSetting = _settingRepo.Table.FirstOrDefault(m => m.Key == PenaltyFeeKey);
+            if (penaltyFeeSetting == null)
+            {
+                throw new Exception($"{PenaltyFeeKey} setting cannot found.");
+            }
+            int penaltyFee = int.Parse(penaltyFeeSetting.Value);
             var country = _countryRepo.Table.Include("SpecialDays").Include("OffDaysOfWeek").FirstOrDefault(m => m.Id == countryId);
 
             var retVal = new CalculateModel(limit, penaltyFee, country.Currency);
-            
+
             var offDays = country.OffDaysOfWeek.Select(m => m.DayOfWeek);
             var specialDays = country.SpecialDays.Select(m => m.SpecialDate);
 

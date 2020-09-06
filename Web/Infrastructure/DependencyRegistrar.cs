@@ -1,6 +1,7 @@
 ﻿using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Services.CalculationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Web.Infrastructure
         public static void Register(IServiceCollection services)
         {
             services.AddScoped<IDbContext, DefaultDbContext>();
+            services.AddScoped<ICalculationService, CalculationService>();
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
         }
     }

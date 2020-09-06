@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Data
@@ -18,6 +22,34 @@ namespace Data
                 base.Database.Migrate();
                 migrated = true;
             }
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            IConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            IConfiguration configuration = configurationBuilder.Build();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            
+            base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //dynamically load all entity and query type configurations
+            var typeConfigurations = Assembly.GetExecutingAssembly().GetTypes().Where(type =>
+                (type.BaseType?.IsGenericType ?? false)
+                    && (type.BaseType.GetGenericTypeDefinition() == typeof(ProjectEntityTypeConfiguration<>)));
+
+            List<IMappingConfiguration> configurations = new List<IMappingConfiguration>();
+            foreach (var typeConfiguration in typeConfigurations)
+            {
+                var configuration = (IMappingConfiguration)Activator.CreateInstance(typeConfiguration);
+                configuration.ApplyConfiguration(modelBuilder);
+            }
+
+            base.OnModelCreating(modelBuilder);
         }
         public bool TransactionHasCalledMoreThanOne { get; set; }
 
