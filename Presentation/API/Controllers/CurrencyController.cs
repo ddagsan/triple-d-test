@@ -20,6 +20,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Services.Models.Currency>), 200)]
         public IActionResult Get()
         {
             var items = _currencyService.Get();
