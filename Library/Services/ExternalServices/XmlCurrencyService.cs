@@ -19,7 +19,7 @@ namespace Services.ExternalServices
             _client.UseSerializer<CustomXmlSerializer>();
             _client.ThrowOnDeserializationError = true;
         }
-        public IEnumerable<ServiceModels.Currency> Get(string sort)
+        public IEnumerable<ServiceModels.Currency> Get(string sort, string where)
         {
             var request = new RestRequest(Method.GET);
             IRestResponse<Models.MainData> response = _client.Execute<Models.MainData>(request);
