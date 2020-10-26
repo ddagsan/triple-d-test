@@ -21,9 +21,9 @@ namespace API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Services.Models.Currency>), 200)]
-        public IActionResult Get()
+        public IActionResult Get(string sort = null)
         {
-            var items = _currencyService.Get();
+            var items = _currencyService.Get(sort);
             return Ok(items);
         }
     }

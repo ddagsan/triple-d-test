@@ -9,25 +9,33 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Linq.Dynamic.Core;
 
 namespace Services.ExternalServices
 {
+
     public class CsvCurrencyService : ICurrencyService
     {
         private const string _sourcePath = "currencies.csv";
         IRestClient _client;
         public CsvCurrencyService()
         {
-            
+
         }
 
-        public IEnumerable<Services.Models.Currency> Get()
+        public IEnumerable<Services.Models.Currency> Get(string sort)
         {
             using (var reader = new StreamReader(_sourcePath))
             {
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    return csv.GetRecords<Services.Models.Currency>().ToList();
+                    var retVal = csv.GetRecords<Services.Models.Currency>();
+
+                    //TODO: sort ortak sınıftan gelebilir xml için de.
+                    if (!string.IsNullOrWhiteSpace(sort))
+                        retVal = retVal.AsQueryable().OrderBy(sort);
+
+                    return retVal.ToList();
                 }
             }
         }
