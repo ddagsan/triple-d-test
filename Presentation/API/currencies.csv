@@ -1,0 +1,4 @@
+﻿Name,Unit,Code,ForexBuying,ForexSelling,BanknoteBuying,BanknoteSelling,CrossUsdRate
+usd,1,usd,8.0285,8.0429,8.0228,8.055,0
+aud,1,aud,5.708,5.7452,5.6817,5.7797,1.403
+jpy,100,jpy,7.6357,7.6862,7.6074,7.7154,104.89
