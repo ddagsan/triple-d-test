@@ -1,12 +1,14 @@
-﻿using Services.ExternalServices.Models;
+﻿using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using ServiceStack.Text;
 
 namespace API.Infrastructure.SupportedFile.Formats
 {
@@ -19,10 +21,9 @@ namespace API.Infrastructure.SupportedFile.Formats
         }
         public byte[] GetAsByte()
         {
-            XmlSerializer xs = new XmlSerializer(typeof(List<Currency>));
             using (var ms = new MemoryStream())
             {
-                xs.Serialize(ms, _currencies);
+                CsvSerializer.SerializeToStream(_currencies, ms);
                 return ms.ToArray();
             }
         }

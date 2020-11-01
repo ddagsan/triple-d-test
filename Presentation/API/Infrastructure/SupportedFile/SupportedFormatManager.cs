@@ -18,7 +18,7 @@ namespace API.Infrastructure.SupportedFile
                     format = new XmlFormat(currencies);
                     break;
                 case SupportedFormatType.CSV:
-                    format = new XmlFormat(currencies);
+                    format = new CsvFormat(currencies);
                     break;
                 default:
                     throw new NotImplementedException();
