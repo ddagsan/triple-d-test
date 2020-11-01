@@ -5,6 +5,6 @@ namespace Services.ExternalServices
 {
     public interface ICurrencyService : IExternalService
     {
-        IEnumerable<Services.Models.Currency> Get(string sort, string where);
+        List<Services.Models.Currency> Get(string sort, string where);
     }
 }

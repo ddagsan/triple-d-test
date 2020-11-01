@@ -23,7 +23,7 @@ namespace Services.ExternalServices
 
         }
 
-        public IEnumerable<Services.Models.Currency> Get(string sort, string where)
+        public List<Services.Models.Currency> Get(string sort, string where)
         {
             using (var reader = new StreamReader(_sourcePath))
             {

@@ -19,11 +19,11 @@ namespace Services.ExternalServices
             _client.UseSerializer<CustomXmlSerializer>();
             _client.ThrowOnDeserializationError = true;
         }
-        public IEnumerable<ServiceModels.Currency> Get(string sort, string where)
+        public List<ServiceModels.Currency> Get(string sort, string where)
         {
             var request = new RestRequest(Method.GET);
             IRestResponse<Models.MainData> response = _client.Execute<Models.MainData>(request);
-            return response.Data.Currencies.Select(m => converToModel(m));
+            return response.Data.Currencies.Select(m => converToModel(m)).ToList();
         }
 
         private ServiceModels.Currency converToModel(Models.Currency currency)
