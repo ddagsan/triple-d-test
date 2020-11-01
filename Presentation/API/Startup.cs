@@ -97,9 +97,6 @@ namespace API
 
             app.UseRouting();
 
-            //app.UseAuthentication();
-            //app.UseAuthorization();
-
             app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
