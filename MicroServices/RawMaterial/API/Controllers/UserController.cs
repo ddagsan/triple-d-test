@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Services.AuthServices;
-using Services.ExternalServices;
 
 namespace API.Controllers
 {
@@ -25,8 +24,7 @@ namespace API.Controllers
         [HttpPost("authenticate")]
         public IActionResult Post(string username, string pass)
         {
-            var model = _authService.ValidateAndGet(username, pass);
-            return Ok(model);
+            return Ok();
         }
 
         [HttpGet]

@@ -1,7 +1,6 @@
 ﻿using Data;
 using Microsoft.Extensions.DependencyInjection;
 using Services.AuthServices;
-using Services.ExternalServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;

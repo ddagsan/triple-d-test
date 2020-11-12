@@ -1,6 +1,5 @@
 ﻿using RestSharp;
 using RestSharp.Serialization;
-using Services.ExternalServices.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;

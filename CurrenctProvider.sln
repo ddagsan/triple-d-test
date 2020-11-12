@@ -8,9 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{31FCFAF9-549D-4082-9945-4AA5B0FAF7C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RawMaterial", "RawMaterial", "{02B70DDB-1A58-457A-A57F-ADF2FB125D40}"
-	ProjectSection(SolutionItems) = preProject
-		MicroServices\RawMaterial\Services\Services.csproj = MicroServices\RawMaterial\Services\Services.csproj
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Purchase", "Purchase", "{62F4FBE1-99D2-4D59-96CD-375FF6E7CD4C}"
 EndProject
@@ -33,6 +30,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "MicroServices\Purchase\Services\Services.csproj", "{7161ED4E-730A-4DAD-8459-B8BE1E8B87AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Test", "MicroServices\Purchase\Services.Test\Services.Test.csproj", "{BD1F70B9-F44B-4F57-A4D9-A339953DC77A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "MicroServices\RawMaterial\Services\Services.csproj", "{8F35373D-D24F-4892-BB73-FD4B60CF3C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +79,10 @@ Global
 		{BD1F70B9-F44B-4F57-A4D9-A339953DC77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD1F70B9-F44B-4F57-A4D9-A339953DC77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD1F70B9-F44B-4F57-A4D9-A339953DC77A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F35373D-D24F-4892-BB73-FD4B60CF3C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F35373D-D24F-4892-BB73-FD4B60CF3C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F35373D-D24F-4892-BB73-FD4B60CF3C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F35373D-D24F-4892-BB73-FD4B60CF3C8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +100,7 @@ Global
 		{2B96CB35-01DB-477C-904A-0AE90E244DB5} = {62F4FBE1-99D2-4D59-96CD-375FF6E7CD4C}
 		{7161ED4E-730A-4DAD-8459-B8BE1E8B87AA} = {62F4FBE1-99D2-4D59-96CD-375FF6E7CD4C}
 		{BD1F70B9-F44B-4F57-A4D9-A339953DC77A} = {62F4FBE1-99D2-4D59-96CD-375FF6E7CD4C}
+		{8F35373D-D24F-4892-BB73-FD4B60CF3C8B} = {02B70DDB-1A58-457A-A57F-ADF2FB125D40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {705C9064-FD80-4445-9CDB-693CB5A1A036}

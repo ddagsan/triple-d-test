@@ -12,14 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Global\Common\Common.csproj" />
-    <ProjectReference Include="..\..\Common\Common.csproj" />
-    <ProjectReference Include="..\..\Library\Core\Core.csproj" />
-    <ProjectReference Include="..\..\Library\Data\Data.csproj" />
-    <ProjectReference Include="..\..\Library\Services\Services.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Data\Data.csproj" />
-    <ProjectReference Include="..\Services.Test\Services.Test.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
